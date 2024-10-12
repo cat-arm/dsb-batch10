@@ -8,3 +8,9 @@ My data science and analytics projects
 3. R programing - Pao Ying Chub?
 4. Looker GA4 Dashboard
 5. Linear Regression Model using caret
+
+## Contact Me
+reach out to me at paiigak1989@gmail.com
+
+## Image
+![CATARM](https://catarmdev.wordpress.com/wp-content/uploads/2024/10/devarm.png)
