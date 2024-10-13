@@ -167,3 +167,5 @@ my_stupid_function <- function() {
 cube <- function(base, power) {
   base ** power
 }
+
+hello() <- function() print("hi")
