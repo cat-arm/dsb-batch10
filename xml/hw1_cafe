@@ -1,0 +1,55 @@
+<cafe>
+  <dessert>
+    <name>Honey Toast</name>
+    <price>250</price>
+    <addon>
+      <Option>
+        <name>Ice-cream</name>
+        <price>50</price>
+      </Option>
+      <Option>
+        <name>Up-size</name>
+        <price>100</price>
+      </Option>
+    </addon>
+    <promotion>Buy with drink discount 10%</promotion>
+  </dessert>
+  <dessert>
+    <name>Chocolate cake</name>
+    <price>150</price>
+    <addon></addon>
+    <promotion>Free chocolate dip</promotion>
+  </dessert>
+  <drink>
+    <name>Hot coffee</name>
+    <price>60</price>
+    <addon>
+      <Option>
+        <name>Up-size</name>
+        <price>10</price>
+      </Option>
+    </addon>
+    <promotion></promotion>
+  </drink>
+  <drink>
+    <name>Chocolate frappe</name>
+    <price>150</price>
+    <addon>
+      <Option>
+        <name>Whip creamm</name>
+        <price>20</price>
+      </Option>
+      <Option>
+        <name>Up-size</name>
+        <price>20</price>
+      </Option>
+    </addon>
+    <promotion>Buy with Chocolate cake with 200</promotion>
+  </drink>
+  <snack>
+    <name>Fried chicken</name>
+    <price>200</price>
+    <addon></addon>
+    <promotion>Special price for 150 only today</promotion>
+  </snack>
+</cafe>
