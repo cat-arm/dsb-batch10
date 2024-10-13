@@ -1,0 +1,99 @@
+---
+title: "Homework Data Viz Batch 10"
+author: "Arm"
+date: "2024-08-28"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+# Hello World
+
+```{r}
+library(tidyverse)
+print("Loaded library for data visualization")
+```
+
+# see detail of data
+```{r}
+diamonds
+?diamonds
+```
+
+
+## Prepare Data
+```{r}
+set.seed(42)
+sample_df <- diamonds %>%
+  sample_n(2000)
+```
+
+
+## **1.**      To show the distribution of depth percentages in the dataset.
+## **result**: The most common total depth percentage is 62%
+```{r}
+ggplot(sample_df, aes(x = depth)) +
+  theme_minimal() +
+  geom_histogram(binwidth = 1, fill = "green", color = "black") +
+  labs(title = "Histogram of Diamond Depth Percentages",
+       x = "Depth Percentage",
+       y = "Count")
+```
+
+## **2.**      To examine the relationship between carat and price.
+## **result**: Larger carat of diamonds tend to have higher prices
+```{r}
+ggplot(sample_df, aes(x = carat, y = price)) +
+  theme_minimal() +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm") +
+  labs(title = "Scatter Plot of Carat vs. Price",
+       x = "Carat",
+       y = "Price")
+```
+
+## **3.**      Explore how the relationship between price and carat varies across different cuts.
+## **result**: If you want to sell diamond in more price you have to do at least cut in vaery good it has oppotunity to rasie a price
+```{r}
+ggplot(sample_df, aes(x = carat, y = price)) +
+  theme_minimal() +
+  geom_point(alpha = 0.3) +
+  geom_smooth(method = "lm") +
+  facet_grid(rows = vars(cut)) +
+  labs(title = "Scatter Plot of Carat vs. Price Faceted by Cut",
+       x = "Carat",
+       y = "Price")
+```
+
+## **4.**      Compare the relationship between carat and price, colored by clarity of diamonds.
+## **result**: If clarity is worst the price rarely to over 10000 usd
+```{r}
+bad_clarity_sample_df <- sample_df %>%
+  filter(clarity %in% c("I1", "SI2", "SI1"))
+
+bad_clarity_sample_df$clarity <- factor(bad_clarity_sample_df$clarity,
+                                         levels = c("I1", "SI2", "SI1"),
+                                         labels = c("Worst", "Worse", "Bad"))
+
+ggplot(bad_clarity_sample_df, aes(x = carat, y = price, color = clarity)) +
+  theme_minimal() +
+  geom_point(alpha = 0.8) +
+  scale_color_manual(values = c("Worst" = "red", "Worse" = "blue", "Bad" = "green"))
+  labs(title = "Scatter Plot of Carat vs. Price Faceted by Clarity",
+       x = "Carat",
+       y = "Price",
+       color = "Clarity")
+```
+
+## **5.**      Visualize the density of prices and carats for different cuts.
+## **result**: It has the weird case we have number of more than 100 dianonds which has low karat but cut in the ideal
+```{r}
+ggplot(sample_df, aes(x = carat, y = price)) +
+  theme_minimal() +
+  geom_bin2d(alpha = 0.5) +
+  scale_fill_gradient(low = "red", high = "green") +
+  facet_wrap(~ cut) +
+  labs(title = "Heatmap of Price vs. Carat by Cut",
+       x = "Carat",
+       y = "Price") 
+```
